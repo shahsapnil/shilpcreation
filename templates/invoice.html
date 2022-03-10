@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.1">
+    <title>Tax Invoice</title>
+    <style>
+        .bordor,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        .nobordor tr td {
+        border:none;
+        }
+        table td{
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        .wrap{
+            border: 1px solid black;
+            line-height: 5px;
+            padding-left: 5px;
+        }
+        .vtop{
+            vertical-align: top;
+        }
+        .center{
+            text-align: center;
+            line-height: 5px;
+        }
+        .wid{
+            width: 75%;
+        }
+    </style>
+</head>
+<body class="wid">
+    <h3 align="center">Tax Invoice</h3>
+    <table width=100% class="bordor">
+        <tr>
+            <td>
+                <b>SHILP CREATION</b> <br>
+                302, FLOOR-3RD FLOOR, DHARA APPARTMENT, ASHA NAGAR, NAVSARI, GUJARAT, 396445 <br>
+                GSTIN/UIN : 24AQDPS8411N1ZH
+            </td>
+            <td>
+                Invoice No. <br>
+                <b>{{inumber}}</b>
+            </td>
+            <td>
+                Dated <br>
+                <b>{{date}}</b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Buyer (Bill to) <br>
+                <b>{{pname}}</b> <br>
+                {{address}} <br>
+                GSTIN/UIN : {{gnumber}}
+            </td>
+            <td colspan="2"></td>
+        </tr>
+    </table>
+    <table width=100% class="bordor">
+        <tr align="center">
+            <td width=2%>SI No.</td>
+            <td>Description of Goods</td>
+            <td>HSN/SAC </td>
+            <td>Quantity</td>
+            <td>Rate (Incl. of Tax)</td>
+            <td>Rate</td>
+            <td>per</td>
+            <td>Amount</td>
+        </tr>
+        {% set count = namespace(value=1) %}
+        {% for i in passlist %}
+        <tr>
+            <td>{{ count.value }}</td>
+            <td><b>{{i[0]}}</b></td>
+            <td>5407</td>
+            <td><b>{{i[1]}}</b></td>
+            <td>{{i[2]+(i[2]*5)/100}}</td>
+            <td>{{i[2]}}</td>
+            <td>MTR</td>
+            <td><b>{{i[1]*i[2]}}</b></td>
+        </tr>
+        {% set count.value = count.value + 1 %}
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td align="right"><b><i>IGST</i></b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>{{igst}}</b></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td align="right">TOTAL</td>
+            <td></td>
+            <td><b>{{qty}} MTR</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>&#x20B9 {{finaltotal}}</b></td>
+        </tr>
+    </table>
+    <div class="wrap">
+        <p>Amount Chargeable (in words)</p>
+        <h3><b>INR {{textfinal}} Only</b></h3>
+    </div>
+    <table  width=100% class="bordor">
+        <tr>
+            <td rowspan="2" align="right">Taxable Value</td>
+            <td colspan="2" width=15% align="center">Integrated Tax</td>
+            <td rowspan="2" width=15%>Total Tax Amount</td>
+        </tr>
+        <tr>
+            <td>Rate</td>
+            <td>Amount</td>
+        </tr>
+        <tr>
+            <td align="right">{{total}}</td>
+            <td>5%</td>
+            <td>{{igst}}</td>
+            <td>{{igst}}</td>
+        </tr>
+        <tr>
+            <td align="right"><b>Total : {{total}}</b></td>
+            <td></td>
+            <td><b>{{igst}}</b></td>
+            <td><b>{{igst}}</b></td>
+        </tr>
+    </table>
+<table width=100% class="bordor">
+    <tr>
+        <td colspan="2">Tax Amount (in words) : <b>{{textigst}}</td>
+    </tr>
+    <tr>
+        <td  width=50%>
+            <b><u>Declaration</u></b><br>
+            <p>We declare that this invoice shows the actual price of
+                the goods described and that all particulars are true
+                and correct.
+                </p>
+        </td>
+        <td>
+            <table width=100% class="nobordor">
+                <tr>
+                    <td colspan="2">Company’s Bank Details</td>
+                </tr>
+                <tr>
+                    <td>A/c Holder’s Name</td>
+                    <td><b>SHILP CREATION</b></td>
+                </tr>
+                <tr>
+                    <td>Bank Name</td>
+                    <td><b>HDFC BANK A/C 83130</b></td>
+                </tr>
+                <tr>
+                    <td>A/c No.</td>
+                    <td><b>50200054783130</b></td>
+                </tr>
+                <tr>
+                    <td>Branch & IFS Code</td>
+                    <td><b>NANDINI COMPLEX & HDFC0000135</b></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="vtop">Customer’s Seal and Signature</td>
+        <td align="right">
+            <b>for SHILP CREATION</b>
+            <br><br><br>
+            Authorised Signatory
+        </td>
+    </tr>
+</table>
+<div class="center">
+<h4>SUBJECT TO NAVSARI,GUJARAT JURISDICTION</h4>
+<p>This is a Computer Generated Invoice</p>
+</div>
+</body>
+</html>
