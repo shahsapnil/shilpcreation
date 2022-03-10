@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shilp Creation</title>
+</head>
+<body>
+  <form method="POST" action="http://127.0.0.1:5000/register">
+    Invoice Number : <input type="text" name="inumber" required><br>
+    Date : <input type="text" name="date" required><br>
+    Party Name : <input type="text" name="pname" required><br>
+    Address : <textarea  name="address" rows="4" cols="50"></textarea><br>
+    GST Number : <input type="text" name="gnumber" required><br>
+    <table name="desc">
+      <tr>
+        <th>SI No</th>
+        <th>Description of Goods</th>
+        <th>Quantity</th>
+        <th>Rate</th>
+      </tr>
+      <tr>
+        <th>1</th>
+        <th><input type="text" name="goods1" ></th>
+        <th><input type="text" name="qty1" ></th>
+        <th><input type="text" name="rate1" ></th>
+      </tr>
+      <tr>
+        <th>2</th>
+        <th><input type="text" name="goods2" ></th>
+        <th><input type="text" name="qty2" ></th>
+        <th><input type="text" name="rate2" ></th>
+      </tr>
+      <tr>
+        <th>3</th>
+        <th><input type="text" name="goods3" ></th>
+        <th><input type="text" name="qty3" ></th>
+        <th><input type="text" name="rate3" ></th>
+      </tr>
+      <tr>
+        <th>4</th>
+        <th><input type="text" name="goods4" ></th>
+        <th><input type="text" name="qty4" ></th>
+        <th><input type="text" name="rate4" ></th>
+      </tr>
+      <tr>
+        <th>5</th>
+        <th><input type="text" name="goods5" ></th>
+        <th><input type="text" name="qty5" ></th>
+        <th><input type="text" name="rate5" ></th>
+      </tr>
+    </table>
+    <input type="submit" value="submit">
+</form>
+</body>
+</html>
