@@ -1,4 +1,3 @@
-import webbrowser
 from flask import Flask,render_template,request
 from num2words import num2words
 
@@ -107,5 +106,4 @@ def register():
     # return render_template('invoice.html')
 
 if __name__=="__main__":
-    webbrowser.open_new('http://127.0.0.1:5000/')
     app.run(debug=True)
